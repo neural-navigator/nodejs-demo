@@ -1,11 +1,6 @@
-const superHero = require('./moduleCaching')
+const math = require('./math')
 
-console.log(superHero.getName());
+const { add, subtract } = math;
 
-superHero.setName("SuperMan")
-console.log(superHero.getName());
-
-
-const superHero2 = require('./moduleCaching')
-
-console.log(superHero2.getName());
+console.log(add(4,2));
+console.log(subtract(4,2));
