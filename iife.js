@@ -9,3 +9,19 @@
     const superHero = "superMan";
     console.log(superHero);
 })();
+
+// iife with argument
+
+
+(function (message) {
+    const superHero = "superMan";
+    console.log(message, superHero);
+})("Hello,");
+
+
+// module wrapper
+
+(function(exports, require, module, __filename, __dirname){
+    const superHero = "Bat Man"
+    console.log(superHero);
+})
