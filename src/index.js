@@ -1,30 +1,45 @@
 const { error } = require('node:console');
-const fs = require('node:fs')
+const fs = require('node:fs/promises')
 
-const fileContents = fs.readFileSync('./src/file.txt', 'utf-8')
-
-console.log(fileContents);
-
-console.log("Before async method");
-
-fs.readFile('./src/file.txt', 'utf-8', (error, data) => {
-    if(error){
-        console.log(error);
-    } else {
+async function readFile() {
+    try {
+        const data = await fs.readFile('./src/file1.txt', 'utf-8');
         console.log(data);
+    } catch (err) {
+        console.log(err);
     }
-})
+}
 
-console.log("after async method");
+readFile();
 
-fs.writeFileSync('./src/file1.txt', "Hello world!")
+fs.readFile('./src/file1.txt', 'utf-8')
+    .then( (data)=> {console.log(data)})
+    .catch( (error) => {console.log(error)})
 
-fs.writeFile('./src/file2.txt', 'Hello World!', {flag: "a"}, (error, data) => {
-    if(error) {
-        console.log(error);
-    } else {
-        console.log("file written!");
-    }
-})
+// const fileContents = fs.readFileSync('./src/file.txt', 'utf-8')
+
+// console.log(fileContents);
+
+// console.log("Before async method");
+
+// fs.readFile('./src/file.txt', 'utf-8', (error, data) => {
+//     if(error){
+//         console.log(error);
+//     } else {
+//         console.log(data);
+//     }
+// })
+
+// console.log("after async method");
+
+// fs.writeFileSync('./src/file1.txt', "Hello world!")
+
+// fs.writeFile('./src/file2.txt', 'Hello World!', {flag: "a"}, (error, data) => {
+//     if(error) {
+//         console.log(error);
+//     } else {
+//         console.log("file written!");
+//     }
+// })
 
 // {flag: "a"} is used for append
