@@ -1,29 +1,13 @@
-// const math = require('./math')
+const PizzaShop = require('./pizza-shop')
+const DrinkMachine = require('./drink-machine')
 
-// const { add, subtract } = math;
+const pizzaShop = new PizzaShop();
+const drinkMachine = new DrinkMachine();
 
-// console.log(add(4,2));
-// console.log(subtract(4,2));
+pizzaShop.on("order", (size, topping) => {
+    console.log(`Order received! Baking a ${size} pizza with ${topping}`);
+    drinkMachine.serveDrink(size);
+})
 
-// const data = require('./data.json')  // require('./data') also give the same result
-
-// console.log(data)
-
-// built in module demo
-
-const { log } = require("node:console") // also works fine with require("console")
-const path = require("node:path")
-
-// log(__filename)
-// log(__dirname)
-
-// log(path.basename(__filename))
-// log(path.basename(__dirname))
-
-// log(path.extname(__filename))
-
-// log(path.parse(__filename))
-
-log(path.format(path.parse(__filename)))
-
-log(path.join("a", "b", "c"))
+pizzaShop.order("large", "mushrooms");
+pizzaShop.displayOrderNumber();
