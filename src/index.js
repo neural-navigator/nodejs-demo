@@ -2,7 +2,8 @@ const fs = require('node:fs')
 
 
 const readableStream = fs.createReadStream("./src/file.txt", {
-    encoding: "utf-8"
+    encoding: "utf-8",
+    highWaterMark: 2
 });
 
 const writeableStream = fs.createWriteStream("./src/file4.txt");
