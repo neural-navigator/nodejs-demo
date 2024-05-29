@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 
-//
+// set the number of threads
 process.env.UV_THREADPOOL_SIZE = 16;
 const MAX_CALLS = 16
 
